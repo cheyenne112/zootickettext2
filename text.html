@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treasure Box Unlock Mission</title>
+    <style>
+        * {margin:0;padding:0;box-sizing:border-box;font-family:Arial, sans-serif}
+        body{background:#f5f5f5;padding:30px 20px;text-align:center}
+        .box{max-width:450px;margin:0 auto;background:#ffffff;padding:30px;border-radius:12px;box-shadow:0 2px 10px #dddddd}
+        .title{font-size:22px;margin-bottom:20px;color:#333333}
+        #answerInput{width:100%;padding:12px;font-size:16px;border:1px solid #ddd;border-radius:6px;margin-bottom:15px}
+        #submitBtn{padding:12px 30px;background:#2563eb;color:#fff;border:none;border-radius:6px;font-size:16px;cursor:pointer;font-weight:bold}
+        #errorTip{margin:15px 0;color:#d92525;display:none;font-size:16px}
+        .imgWrapper{margin-top:25px;display:none}
+        .targetImage{width:100%;border-radius:8px}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2 class="title">Unlock Your Secret Treasure Box!</h2>
+        <!-- Kids quiz question -->
+        <p style="margin-bottom:10px;font-size:16px;">Question: Can you find the red cat letter in each lesson?</p>
+        <input id="answerInput" placeholder="Type your secret code here">
+        <button id="submitBtn">Open Treasure Box</button>
+        <div id="errorTip">Oops, wrong secret code! Try again~</div>
+
+        <!-- Treasure reward picture area -->
+        <div class="imgWrapper">
+            <p style="margin-bottom:10px;font-size:16px;font-weight:bold;">Hooray! Your treasure is here:</p>
+            <!-- Replace src with your zoo ticket image file or online link -->
+            <img class="targetImage" src="zoo_ticket.jpg" alt="Happy Zoo Ticket Reward">
+        </div>
+    </div>
+
+<script>
+// Secret unlock code setting
+const CORRECT_ANSWER = "ZOOPASSCARD";
+
+const inputField = document.getElementById("answerInput");
+const submitButton = document.getElementById("submitBtn");
+const errorNotice = document.getElementById("errorTip");
+const imageContainer = document.querySelector(".imgWrapper");
+
+submitButton.onclick = function(){
+    errorNotice.style.display = "none";
+    imageContainer.style.display = "none";
+    const userInput = inputField.value.trim().toUpperCase();
+    if(userInput === CORRECT_ANSWER){
+        imageContainer.style.display = "block";
+    }else{
+        errorNotice.style.display = "block";
+    }
+}
+</script>
+</body>
+</html>
